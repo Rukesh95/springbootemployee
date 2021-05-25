@@ -20,7 +20,8 @@ spring:
           org:
             hibernate:
               dialect:
-                MySQL5Dialect       
+                MySQL5Dialect  
+server.port: 9090
     
         
         

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.scg.employee.feign.proxy.QualifierDemoProxy;
 import com.scg.employee.service.EmployeeService;
 import com.scg.employee.vo.EmployeeVO;
+import com.scg.exceptions.ErrorCode;
 import com.scg.exceptions.NotFoundException;
 
 @RestController
@@ -24,6 +26,9 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+
+	@Autowired
+	private QualifierDemoProxy qualifierDemoProxy;
 
 	@PostMapping
 	public EmployeeVO save(@RequestBody final EmployeeVO employeeVO) {
@@ -43,7 +48,7 @@ public class EmployeeController {
 	@GetMapping("/{id}")
 	public ResponseEntity<EmployeeVO> getEmployeeById(@PathVariable final Integer id) {
 		if (null == employeeService.getEmployeeById(id)) {
-			throw new NotFoundException("Employee not found with id " + id);
+			throw new NotFoundException(ErrorCode.EMPLOYEE_NOT_FOUND);
 		}
 		return new ResponseEntity<>(employeeService.getEmployeeById(id), HttpStatus.OK);
 	}
@@ -69,5 +74,10 @@ public class EmployeeController {
 //		return departmentService.getDepartment();
 //
 //	}
+
+	@GetMapping("/feigndemo")
+	public String testFeign() {
+		return qualifierDemoProxy.inputName1();
+	}
 
 }
