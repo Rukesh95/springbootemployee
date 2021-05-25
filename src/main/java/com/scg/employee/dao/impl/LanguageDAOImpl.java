@@ -45,4 +45,14 @@ public class LanguageDAOImpl implements LanguageDAO {
 		return "Language with id : " + id + " Removed";
 	}
 
+	@Override
+	public List<String> languageWithEmployeeAssociated() {
+		return languageRepository.languageWithEmployeeAssociated();
+	}
+
+	@Override
+	public List<String> languageWithNoEmployeeAssociated() {
+		return languageRepository.languageWithNoEmployeeAssociated();
+	}
+
 }

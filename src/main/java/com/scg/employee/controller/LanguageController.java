@@ -47,4 +47,14 @@ public class LanguageController {
 
 	}
 
+	@GetMapping("/active")
+	public List<String> languageWithEmployeeAssociated() {
+		return languageService.languageWithEmployeeAssociated();
+	}
+
+	@GetMapping("/inactive")
+	public List<String> languageWithNoEmployeeAssociated() {
+		return languageService.languageWithNoEmployeeAssociated();
+	}
+
 }

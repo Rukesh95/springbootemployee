@@ -13,4 +13,8 @@ public interface LanguageDAO {
 
 	String deleteLanguage(final Integer id);
 
+	List<String> languageWithEmployeeAssociated();
+
+	List<String> languageWithNoEmployeeAssociated();
+
 }

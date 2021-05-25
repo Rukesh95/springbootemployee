@@ -13,4 +13,8 @@ public interface LanguageService {
 
 	LanguageVO insertLanguage(LanguageVO languageVO);
 
+	List<String> languageWithEmployeeAssociated();
+
+	List<String> languageWithNoEmployeeAssociated();
+
 }

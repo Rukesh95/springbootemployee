@@ -35,4 +35,14 @@ public class LanguageServiceImpl implements LanguageService {
 		return languageDAO.saveLanguage(languageVO);
 	}
 
+	@Override
+	public List<String> languageWithEmployeeAssociated() {
+		return languageDAO.languageWithEmployeeAssociated();
+	}
+
+	@Override
+	public List<String> languageWithNoEmployeeAssociated() {
+		return languageDAO.languageWithNoEmployeeAssociated();
+	}
+
 }
